@@ -1,12 +1,20 @@
-import './App.css'
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
-export const DogShelterApp = () => {  
+import { DogShelterRouter } from './router';
+import { store } from './store/store';
 
+
+
+export const DogShelterApp = () => {
   return (
     <>
-      <div>
-        Hello world!
-      </div>
+      <Provider store={store}>
+        <BrowserRouter>
+          <DogShelterRouter />
+        </BrowserRouter>
+      </Provider>
     </>
   )
 }
+

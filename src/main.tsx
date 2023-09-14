@@ -1,7 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-import {DogShelterApp} from './DogShelterApp.tsx'
+import { DogShelterApp } from './DogShelterApp';
 
 import './styles.css'
 
