@@ -2,11 +2,13 @@ import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { LoginPage } from '../auth';
+import { SearchPage } from '../dogs';
 
 import { useAuthStore } from '../hooks';
+import { LoadingComponent } from './components/LoadingComponent';
 
 
-export const DogShelterRouter = () => {
+export const AppRouter = () => {
 
     const { status, checkAuthToken } = useAuthStore();
 
@@ -14,12 +16,9 @@ export const DogShelterRouter = () => {
         checkAuthToken();
     }, []);
 
-
     if (status === 'checking') {
         return (
-            <div>
-                Cargando ...
-            </div>
+            <LoadingComponent />
         )
     }
 
@@ -35,7 +34,8 @@ export const DogShelterRouter = () => {
                     )
                     : (
                         <>
-
+                            <Route path="/" element={<SearchPage />} />
+                            <Route path="/*" element={<Navigate to="/" />} />
                         </>
                     )
             }
