@@ -5,10 +5,10 @@ import { LoginPage } from '../auth';
 import { SearchPage } from '../dogs';
 
 import { useAuthStore } from '../hooks';
-import { LoadingComponent } from './components/LoadingComponent';
+import { LoadingComponent } from './';
 
 
-export const AppRouter = () => {
+export const DogShelterRouter = () => {
 
     const { status, checkAuthToken } = useAuthStore();
 

@@ -1,71 +1,58 @@
 //Imports
 import { useDispatch, useSelector } from 'react-redux';
 
-import { onLogin, onLogout, onChecking, clearErrorMessage } from '../store';
+import { onLogin, onLogout, onChecking } from '../store';
 import { RootState } from '../store/store';
 
+import { login, logout } from '../services';
 import { LoginRequest } from '../interfaces';
-
-import {login, logout} from '../services';
-
 
 
 export const useAuthStore = () => {
 
-    const { status , user, errorMessage } = useSelector( (state: RootState) => state.auth);
+    const { status } = useSelector((state: RootState) => state.auth);
     const dispatch = useDispatch();
 
-    const startLogin = async(payload: LoginRequest) => {
+    const startLogin = async (payload: LoginRequest) => {
 
         dispatch(onChecking());
 
-        try{
+        try {            
             const result = await login(payload);
-            
             if (result.data === 'OK') {
-                dispatch(onLogin());                
-            }else{
-                throw new Error('Error at login, please contact your administrator');                
+                localStorage.setItem("session", "true")
+                dispatch(onLogin());
+            } else {
+                throw new Error('Error at login, please contact your administrator');
             }
 
-        }catch( error ){
+        } catch (error) {
             console.log(error);
-            setTimeout(() => {
-                dispatch(clearErrorMessage());
-            }, 10);
-
         }
     }
 
-    const startLogout = async() => {
-
-        try{
-
-            const result = await logout();
-
-            if(result.data === 'OK'){
-                dispatch(onLogout(''));
-            }else{
-                throw new Error('Error at logout, please contact your administrator');                
-            }
-
-        }catch(error){
-
+    const startLogout = async (executeLogOutApi = true) => {
+        try {
+            if (executeLogOutApi) await logout();
+            localStorage.removeItem("session")
+            dispatch(onLogout());
+        } catch (error) {
             console.log(error);
-
         }
     }
 
     const checkAuthToken = async () => {
-        if( status !== 'authenticated' ) {
-            dispatch(onLogout(''));
+        const session = localStorage.getItem("session");
+
+        if (session === 'true') {
+            dispatch(onLogin());
+        } else {
+            dispatch(onLogout());
         }
     }
 
-    return{
-        //Properties
-        errorMessage,
-        user,
+    return {
+        //Properties        
         status,
         //Methods
         startLogin,

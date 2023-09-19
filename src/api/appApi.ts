@@ -1,25 +1,48 @@
-import axios from 'axios';
+import { ReactNode, useEffect } from 'react';
+
+import axios, { AxiosResponse } from 'axios';
+
 import { getEnvVariables } from '../helpers';
+import { useAuthStore } from "../hooks";
+
 
 const { VITE_API_URL } = getEnvVariables();
 
 const dogShelterApi = axios.create({
-    baseURL: VITE_API_URL,
-    withCredentials: true
+  baseURL: VITE_API_URL,
+  withCredentials: true
 });
 
-//Interceptor for unauthorized requests
-const UNAUTHORIZED = 401;
+const AxiosInterceptor = ({ children }: { children: ReactNode }) => {
 
-axios.interceptors.response.use(
-  response => response,
-  error => {
-    const {status} = error.response;
-    if (status === UNAUTHORIZED) {
-    //   dispatch(userSignOut());
-    }
-    return Promise.reject(error);
- }
-);
+  const { startLogout } = useAuthStore();
+  const UNAUTHORIZED = 401;
+
+  useEffect(() => {
+
+      const resInterceptor = (response: AxiosResponse) => {
+          return response;
+      }
+
+      const errInterceptor = (error: { response: { status: number; }; }) => {
+
+          if (error.response.status === UNAUTHORIZED) {
+            startLogout(false)
+          }
+
+          return Promise.reject(error);
+      }
+
+
+      const interceptor = dogShelterApi.interceptors.response.use(resInterceptor, errInterceptor);
+
+      return () => dogShelterApi.interceptors.response.eject(interceptor);
+
+  }, [])
+
+  return children;
+}
 
 export default dogShelterApi;
+export { AxiosInterceptor }
+
