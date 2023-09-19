@@ -1,5 +1,5 @@
 export interface SearchDogsResponse {
-    next: string,
+    next?: string,
     resultIds: string[],
     total: number
 }
