@@ -23,7 +23,7 @@ import {
           <div className="flex items-center gap-4 border-blue-gray-50">
             <Avatar             
               alt="Nadia López photo" 
-              src="../assets/img/login/Nadia.png" 
+              src="../src/assets/img/login/Nadia.png" 
               className="rounded-full"
             />
             <div>

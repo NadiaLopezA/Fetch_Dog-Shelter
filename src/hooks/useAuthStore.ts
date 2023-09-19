@@ -23,7 +23,7 @@ export const useAuthStore = () => {
             const result = await login(payload);
             
             if (result.data === 'OK') {
-                dispatch(onLogin( payload ));                
+                dispatch(onLogin());                
             }else{
                 throw new Error('Error at login, please contact your administrator');                
             }

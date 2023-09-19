@@ -1,15 +1,13 @@
-import React from 'react';
+import React from "react";
 
 import {
   Navbar,
   Typography,
   IconButton,
   Collapse,
-} from '@material-tailwind/react';
+} from "@material-tailwind/react";
 
-import { NadiaPopOver } from '../components/NadiaPopOver';
-
-
+import { NadiaPopOver } from "../components/NadiaPopOver";
 
 export const NavbarLogin = () => {
   const [openNav, setOpenNav] = React.useState(false);
@@ -30,8 +28,14 @@ export const NavbarLogin = () => {
         color="blue-gray"
         className="p-1 font-normal text-white"
       >
-        <a href="https://fetch.com/" target="_blank" className="flex items-center">
-            <p>Learn more about <span className="text-orange-500">FETCH</span>!</p>
+        <a
+          href="https://fetch.com/"
+          target="_blank"
+          className="flex items-center"
+        >
+          <p>
+            Learn more about <span className="text-orange-500">FETCH</span>!
+          </p>
         </a>
       </Typography>
     </ul>
@@ -40,7 +44,9 @@ export const NavbarLogin = () => {
   return (
     <Navbar className="mx-auto w-full py-2 px-4 lg:px-8 lg:py-4 bg-cyan-800">
       <div className="container mx-auto flex items-center justify-between text-black">
-        <Typography className="mr-4 cursor-pointer py-1.5 text-white font-bold">
+        <Typography 
+          className="mr-4 py-1.5 text-white font-bold"
+        >
           FETCH - SHELTER DOG EXERCISE
         </Typography>
         <div className="hidden lg:block">{navList}</div>
