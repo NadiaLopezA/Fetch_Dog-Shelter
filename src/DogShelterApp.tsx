@@ -1,20 +1,24 @@
-import { Provider } from 'react-redux';
+import { Provider } from "react-redux";
 import { BrowserRouter } from 'react-router-dom';
 
-import { DogShelterRouter } from './router';
-import { store } from './store/store';
+import { DogShelterRouter } from "./router";
+import { store } from "./store/store";
+import { AxiosInterceptor } from "./api/appApi";
 
 
 
-export const DogShelterApp = () => {
+const DogShelterApp = () => {
   return (
     <>
       <Provider store={store}>
-        <BrowserRouter>
-          <DogShelterRouter />
-        </BrowserRouter>
+        <AxiosInterceptor>
+          <BrowserRouter>
+            <DogShelterRouter />
+          </BrowserRouter>
+        </AxiosInterceptor >
       </Provider>
     </>
   )
 }
 
+export default DogShelterApp;
