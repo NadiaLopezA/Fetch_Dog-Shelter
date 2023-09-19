@@ -1,3 +1,5 @@
+import { Location } from ".."
+
 export interface Dog {
     img: string
     name: string
@@ -5,4 +7,5 @@ export interface Dog {
     breed: string
     zip_code: string
     id: string
+    location?: Location
 }
