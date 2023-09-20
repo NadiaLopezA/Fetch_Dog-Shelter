@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const useForm = (initialForm: {loginEmail: string, loginUsername: string} ) => {
+export const useForm = <T>(initialForm: T ) => {
   
     const [ formState, setFormState ] = useState( initialForm );
 

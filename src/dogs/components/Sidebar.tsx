@@ -4,10 +4,14 @@ import { SearchDogsRequest, LocationSearchRequest } from '../../interfaces';
 
 import { DogIcon, AgeComponent, TitleComponent, BreedsComponent, StatesComponent, CityComponent, SubmitButton, DistanceComponent } from './';
 
-import { useDogShelter } from '../../hooks';
+import { useDogShelter, useForm } from '../../hooks';
 
 import { getNewCoordinates } from '../../helpers';
 import { State } from '../../interfaces/Location/State';
+
+const cityField = {
+  city: ""
+}
 
 export const Sidebar = () => {
   //useDogShelter variables
@@ -31,7 +35,7 @@ export const Sidebar = () => {
   const [maxVal, setMaxVal] = useState(20);
 
   //CityComponent variables
-  const [city, setCity] = useState("");
+  const { city, onInputChange } = useForm(cityField);
 
   //StatesComponent variables and functions
   const [statesArray, setStateArray] = useState<State[]>([]); 
@@ -149,7 +153,8 @@ export const Sidebar = () => {
           setStateArray={setStateArray}
         />
         <CityComponent
-          setCity={setCity}
+          city={city}
+          onInputChange={onInputChange}
         />
         <DistanceComponent
           maxDistance={maxDistance}
