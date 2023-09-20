@@ -47,7 +47,7 @@ export const NavbarLogin = () => {
         <Typography 
           className="mr-4 py-1.5 text-white font-bold"
         >
-          FETCH - SHELTER DOG EXERCISE
+          FETCH - DOG SHELTER EXERCISE
         </Typography>
         <div className="hidden lg:block">{navList}</div>
         <IconButton

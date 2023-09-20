@@ -18,7 +18,7 @@ export const CardLogin = () => {
 
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center pb-8 rounded-xl bg-slate-100">
+      <div className="flex min-h-full sm:w-4/5 md:w-4/5 lg:w-full flex-1 flex-col justify-center pb-8 rounded-xl bg-slate-100">
         <div className="bg-cyan-900 rounded-xl text-white">
           <h2 className="mt-4 text-center text-2xl font-bold leading-9 tracking-tight">
             Sign in to your account
