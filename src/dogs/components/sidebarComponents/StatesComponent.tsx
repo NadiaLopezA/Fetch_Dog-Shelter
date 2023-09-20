@@ -5,7 +5,7 @@ import { BadgeComponent } from './';
 export const StatesComponent = (payload: { statesArray: State[], addState: (event: React.ChangeEvent<HTMLSelectElement>) => void, setStateArray: React.Dispatch<React.SetStateAction<State[]>> }) => {
     return (
         <div>
-            <p className="mb-2 ml-2 text-left text-l mt-6 font-medium text-cyan-800 dark:text-white">
+            <p className="mb-2 ml-2 text-left text-l mt-6 font-medium text-cyan-800">
                 States
             </p>
             <label className="sr-only">Underline select</label>

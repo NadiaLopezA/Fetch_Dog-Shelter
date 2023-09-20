@@ -4,7 +4,7 @@ export const AgeComponent = (payload: { minVal: number, maxVal: number, setMinVa
 
     return (
         <div>
-            <p className="mb-4 text-left ml-2 text-l font-medium text-cyan-800 dark:text-white">
+            <p className="mb-4 text-left ml-2 text-l font-medium text-cyan-800">
                 Age Range
             </p>
             <DoubleSlider

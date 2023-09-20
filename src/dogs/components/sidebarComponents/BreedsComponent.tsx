@@ -3,7 +3,7 @@ import { BadgeComponent } from './';
 export const BreedsComponent = ( payload: { dogBreedsArray: string[], addBreed: (event: React.ChangeEvent<HTMLSelectElement>) => void, breedsSelectedArray: string[], setBreedsSelectedArray: React.Dispatch<React.SetStateAction<string[]>>}) => {
     return (
         <div>
-            <p className="mb-2 ml-2 text-left text-l mt-10 font-medium text-cyan-800 dark:text-white">
+            <p className="mb-2 ml-2 text-left text-l mt-10 font-medium text-cyan-800">
                 Breeds
             </p>
             <label className="sr-only">Underline select</label>

@@ -28,7 +28,7 @@ export const DistanceComponent = (payload: {enabledToggle: boolean, userLocaliza
             <div className="mt-8 ml-2 mr-2">
                 {payload.enabledToggle && (
                     <div>
-                        <p className="mb-2 text-left text-xs mt-4 font-medium text-cyan-800 dark:text-white">
+                        <p className="mb-2 text-left text-xs mt-4 font-medium text-cyan-800">
                             MAXIMUM DISTANCE
                         </p>
                         <SliderComponent

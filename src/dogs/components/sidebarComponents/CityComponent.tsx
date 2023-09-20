@@ -3,7 +3,7 @@
 export const CityComponent = (payload: { city: string, onInputChange: ({ target }: React.ChangeEvent<HTMLInputElement>) => void }) => {
     return (
         <div>
-            <p className="mb-3 ml-2 text-left text-l mt-6 font-medium text-cyan-800 dark:text-white decoration-cyan-800">
+            <p className="mb-3 ml-2 text-left text-l mt-6 font-medium text-cyan-800 decoration-cyan-800">
                 City
             </p>
             <input
