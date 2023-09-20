@@ -1,4 +1,8 @@
-import { useAuthStore, useForm } from '../../hooks';
+import { useEffect } from 'react';
+
+import { useAuthStore, useForm, useValidationFields } from '../../hooks';
+import Swal from 'sweetalert2';
+
 
 const loginFormFields = {
   loginEmail: "",
@@ -6,15 +10,39 @@ const loginFormFields = {
 };
 
 export const CardLogin = () => {
-  const { startLogin } = useAuthStore();
+  const { startLogin, setErrorMessage, clearErrorMessage, errorMessage } = useAuthStore();
 
   const { loginEmail, loginUsername, onInputChange } = useForm(loginFormFields);
+
+  const { validateEmail, validateUsername } = useValidationFields();
 
   const loginSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    if (!validateEmail(loginEmail)) {
+      setErrorMessage('Email not valid, please introduce a valid email');
+      return
+    }
+
+    if (!validateUsername(loginUsername)) {
+      setErrorMessage('Invalid username. The username can only contain characters, and a length greater than 3 and less than 10.')
+      return
+    }
+
     startLogin({ email: loginEmail, name: loginUsername });
   };
+
+  useEffect(() => {
+    if (errorMessage !== undefined) {
+      Swal.fire('Authentication failed', errorMessage, 'error');
+    }
+
+    setTimeout(() => {
+      clearErrorMessage()
+    }, 10000);
+
+  }, [errorMessage])
+
 
   return (
     <>
@@ -64,7 +92,7 @@ export const CardLogin = () => {
                 <input
                   id="username"
                   name="loginUsername"
-                  type="username"
+                  type="string"
                   placeholder=" Introduce your username"
                   required
                   value={loginUsername}

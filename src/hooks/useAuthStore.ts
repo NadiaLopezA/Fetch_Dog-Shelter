@@ -1,7 +1,7 @@
 //Imports
 import { useDispatch, useSelector } from 'react-redux';
 
-import { onLogin, onLogout, onChecking } from '../store';
+import { onLogin, onLogout, onChecking, onSetErrorMessage, onClearErrorMessage } from '../store';
 import { RootState } from '../store/store';
 
 import { login, logout } from '../services';
@@ -10,7 +10,7 @@ import { LoginRequest } from '../interfaces';
 
 export const useAuthStore = () => {
 
-    const { status } = useSelector((state: RootState) => state.auth);
+    const { status, errorMessage } = useSelector((state: RootState) => state.auth);
     const dispatch = useDispatch();
 
     const startLogin = async (payload: LoginRequest) => {
@@ -47,13 +47,24 @@ export const useAuthStore = () => {
         }
     }
 
+    const setErrorMessage = (message: string) => {
+        dispatch(onSetErrorMessage(message));
+    }
+
+    const clearErrorMessage = () => {
+        dispatch(onClearErrorMessage());
+    }
+
     return {
         //Properties        
-        status,
+        status, 
+        errorMessage,       
         //Methods
         startLogin,
         startLogout,
-        checkAuthToken
+        checkAuthToken,
+        setErrorMessage,
+        clearErrorMessage
     }
 
 }
