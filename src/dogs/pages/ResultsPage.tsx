@@ -73,7 +73,7 @@ export const ResultsPage = () => {
           }
         </div>
         <Pagination
-          total={dogSearchResult.total}
+          total={dogSearchResult?.total || 0}
         />
         <MatchDoggieCard
           setOpenModal={setOpenModal}
