@@ -1,7 +1,7 @@
 //Imports
 import { useDispatch, useSelector } from 'react-redux';
 
-import { onLogin, onLogout, onChecking, onSetErrorMessage, onClearErrorMessage } from '../store';
+import { onLogin, onLogout, onChecking, onSetErrorMessage, onClearErrorMessage, onDogShelterLogOut } from '../store';
 import { RootState } from '../store/store';
 
 import { login, logout } from '../services';
@@ -32,7 +32,8 @@ export const useAuthStore = () => {
     const startLogout = async (executeLogOutApi = true) => {
 
         if (executeLogOutApi) await logout();
-        localStorage.removeItem("session")
+        localStorage.removeItem("session");
+        dispatch(onDogShelterLogOut());
         dispatch(onLogout());
 
     }

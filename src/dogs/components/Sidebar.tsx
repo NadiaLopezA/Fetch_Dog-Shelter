@@ -16,7 +16,7 @@ export const Sidebar = () => {
     dogBreedsArray,
     searchDogResults,
     updateSearchData,
-    searchdogsWithLocationFilters,
+    searchdogsWithLocationFilters    
   } = useDogShelter();
 
   //Sidebar variables and functions

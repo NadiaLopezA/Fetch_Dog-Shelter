@@ -1,5 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { onGetBreedArray, onSearchDogs, onGetDogsInformation, onChangeSearchData, onChangeSortData, onGetDogMatch } from '../store';
+
+import { 
+    onGetBreedArray, 
+    onSearchDogs, 
+    onGetDogsInformation, 
+    onChangeSearchData, 
+    onChangeSortData, 
+    onGetDogMatch,
+    onSetDogErrorMessage,
+    onClearDogErrorMessage 
+} from '../store';
+
 import { RootState } from '../store/store';
 
 import {getbreeds, searchdogs, matchdog, searchlocation, getdogs, getlocations} from '../services';
@@ -11,7 +22,7 @@ import { DOG_SEARCH_PAGE_SIZE, LOCATION_SEARCH_PAGE_SIZE } from '../helpers';
 
 export const useDogShelter = () => {
     
-    const {   dogBreedsArray, searchData, sortData, dogSearchResult, dogsInformationArray, dogMatch } = useSelector( (state: RootState) => state.dogShelter);
+    const {   dogBreedsArray, searchData, sortData, dogSearchResult, dogsInformationArray, dogMatch, dogErrorMessage } = useSelector( (state: RootState) => state.dogShelter);
     const dispatch = useDispatch();
 
     const getDogBreeds = async() => {        
@@ -47,7 +58,9 @@ export const useDogShelter = () => {
         }
         if (newFilters?.ageMin === 0) delete newFilters.ageMin
         if (newFilters?.ageMax === 20) delete newFilters.ageMax
+        
         updateSearchData(newFilters)
+        
         if (zipCodes.length > 0) {
             searchDogResults(newFilters);
         } else {
@@ -90,6 +103,14 @@ export const useDogShelter = () => {
         }
     }
 
+    const setDogErrorMessage = (message: string) =>{
+        dispatch(onSetDogErrorMessage(message));
+    }
+
+    const clearDogErrorMessage = () => {
+        dispatch(onClearDogErrorMessage());
+    }
+
     return{
         // //Properties
         dogBreedsArray, 
@@ -97,13 +118,16 @@ export const useDogShelter = () => {
         dogSearchResult,
         dogsInformationArray,
         dogMatch,
+        dogErrorMessage,
         // //Methods
         getDogBreeds,
         searchDogResults,
         searchdogsWithLocationFilters,
         updateSearchData,
         updateSortData,
-        getMatch
+        getMatch,
+        setDogErrorMessage,
+        clearDogErrorMessage
     }
 
 }

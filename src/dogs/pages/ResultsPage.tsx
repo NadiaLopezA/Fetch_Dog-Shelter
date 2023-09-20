@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useDogShelter } from '../../hooks/useDogShelterStore';
 
-import { DoggieCard, Pagination, ResultPageDataOrder, ResultPageHeader, MatchDoggieCard } from '../';
+import { DoggieCard, Pagination, ResultPageDataOrder, ResultPageHeader, MatchDoggieCard } from '..';
 
 import { Dog } from '../../interfaces';
 
