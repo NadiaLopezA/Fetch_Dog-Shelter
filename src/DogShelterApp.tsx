@@ -7,12 +7,12 @@ import { AxiosInterceptor } from './api/appApi';
 
 
 
-const DogShelterApp = () => {
+export const DogShelterApp = () => {
   return (
     <>
       <Provider store={store}>
         <AxiosInterceptor>
-          <BrowserRouter>
+          <BrowserRouter basename="/index.html">
             <DogShelterRouter />
           </BrowserRouter>
         </AxiosInterceptor >
@@ -21,4 +21,3 @@ const DogShelterApp = () => {
   )
 }
 
-export default DogShelterApp;
