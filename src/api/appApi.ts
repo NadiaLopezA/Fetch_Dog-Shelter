@@ -2,14 +2,10 @@ import { ReactNode, useEffect } from 'react';
 
 import axios, { AxiosResponse } from 'axios';
 
-import { getEnvVariables } from '../helpers';
 import { useAuthStore } from "../hooks";
 
-
-const { VITE_API_URL } = getEnvVariables();
-
 const dogShelterApi = axios.create({
-  baseURL: VITE_API_URL,
+  baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true
 });
 
