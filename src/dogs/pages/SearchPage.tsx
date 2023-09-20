@@ -1,5 +1,5 @@
 import { NavbarDogShelter, Sidebar } from '../components'
-import { ResultsPage, NoResultsPage } from './';
+import { ResultsPage, StartSearchPage } from './';
 
 import { useDogShelter } from '../../hooks/useDogShelterStore';
 
@@ -20,7 +20,7 @@ export const SearchPage = () => {
             ?
             <ResultsPage />
             :
-            <NoResultsPage />
+            <StartSearchPage />
         }
       </div>
     </div>
