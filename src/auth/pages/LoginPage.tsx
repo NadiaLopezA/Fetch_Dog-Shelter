@@ -15,11 +15,9 @@ export const LoginPage = () => {
             <div>
                 <NavbarLogin />
                 <HeaderLogin />
-                <div className="container mx-auto px-4">
-                    <div className="justify-between items-center flex flex-wrap -mx-4">
-                        <div className="mx-auto px-4 relative w-full lg:w-5/12 -mt-56 md:-mt-72 xl:-mt-72">
-                            <CardLogin />
-                        </div>
+                <div className="mx-auto px-4">
+                    <div className="mx-auto px-6 flex flex-col justify-center items-center relative w-full lg:w-5/12 -mt-80 md:-mt-96 xl:-mt-72">
+                        <CardLogin />
                     </div>
                 </div>
             </div>
