@@ -10,7 +10,7 @@ export const CardLogin = () => {
 
   const { loginEmail, loginUsername, onInputChange } = useForm(loginFormFields);
 
-  const loginSubmit = (event: any) => {
+  const loginSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     startLogin({ email: loginEmail, name: loginUsername });
@@ -29,7 +29,7 @@ export const CardLogin = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" onSubmit={loginSubmit}>
+          <form className="space-y-6" onSubmit={(event) => loginSubmit(event)}>
             <div>
               <label
                 htmlFor="email"
@@ -45,7 +45,7 @@ export const CardLogin = () => {
                   placeholder=" Introduce your email"
                   required
                   value={loginEmail}
-                  onChange={onInputChange}
+                  onChange={(event) => onInputChange(event)}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>

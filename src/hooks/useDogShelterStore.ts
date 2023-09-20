@@ -6,8 +6,7 @@ import {getbreeds, searchdogs, matchdog, searchlocation, getdogs, getlocations} 
 
 import { Dog, Sort, LocationSearchRequest, SearchDogsRequest } from '../interfaces';
 
-
-import { DOG_SEARCH_PAGE_SIZE, LOCATION_SEARCH_PAGE_SIZE } from '../helpers/getConstants';
+import { DOG_SEARCH_PAGE_SIZE, LOCATION_SEARCH_PAGE_SIZE } from '../helpers';
  
 
 export const useDogShelter = () => {
@@ -42,10 +41,12 @@ export const useDogShelter = () => {
             size: LOCATION_SEARCH_PAGE_SIZE
         });
         const zipCodes = result.data.results.map(location => location.zip_code)
-        const newFilters = {
+        const newFilters: SearchDogsRequest = {
             ...filters,
             zipCodes
         }
+        if (newFilters?.ageMin === 0) delete newFilters.ageMin
+        if (newFilters?.ageMax === 20) delete newFilters.ageMax
         updateSearchData(newFilters)
         if (zipCodes.length > 0) {
             searchDogResults(newFilters);
@@ -64,24 +65,27 @@ export const useDogShelter = () => {
             const sort = `${sortData.sortFilter}:${sortData.sortType}`
 
             const filters: SearchDogsRequest = {size: DOG_SEARCH_PAGE_SIZE, sort, ...searchData, ...extraFilters}
-            if (filters.ageMax = 20) delete filters.ageMax
+            if (filters.ageMin === 0) delete filters.ageMin
+            if (filters.ageMax === 20) delete filters.ageMax
 
             const result = await searchdogs(filters);
-            console.log({filters, result})
             const resultIds = result.data.resultIds
             
             dispatch(onSearchDogs(result.data));
 
+
             const dogsInfo = await getdogs(resultIds);
             const dogsLocation = await getlocations(dogsInfo.data.map(dog => dog.zip_code));
+
             for (const dog of dogsInfo.data) {
-                dog.location = dogsLocation.data.find(location => location.zip_code === dog.zip_code)
+                dog.location = dogsLocation.data.find(location => location?.zip_code === dog.zip_code)
             }
 
             dispatch(onGetDogsInformation(dogsInfo.data));
             dispatch(onGetDogMatch());
 
         }catch(error){
+            console.log(error)
             throw new Error('Error at searching dogs, please contact your administrator');                
         }
     }

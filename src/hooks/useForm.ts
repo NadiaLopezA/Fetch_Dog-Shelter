@@ -10,7 +10,7 @@ export const useForm = (initialForm: {loginEmail: string, loginUsername: string}
     }, [ initialForm ])
         
 
-    const onInputChange = ({target}: any) => {
+    const onInputChange = ({target}: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = target;
                 
         setFormState({

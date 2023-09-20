@@ -17,28 +17,24 @@ export const useAuthStore = () => {
 
         dispatch(onChecking());
 
-        try {            
-            const result = await login(payload);
-            if (result.data === 'OK') {
-                localStorage.setItem("session", "true")
-                dispatch(onLogin());
-            } else {
-                throw new Error('Error at login, please contact your administrator');
-            }
+        const result = await login(payload);
 
-        } catch (error) {
-            console.log(error);
+        if (result.data === 'OK') {
+            localStorage.setItem("session", "true")
+            dispatch(onLogin());
+        } else {
+            throw new Error('Error at login, please contact your administrator');
         }
+
+
     }
 
     const startLogout = async (executeLogOutApi = true) => {
-        try {
-            if (executeLogOutApi) await logout();
-            localStorage.removeItem("session")
-            dispatch(onLogout());
-        } catch (error) {
-            console.log(error);
-        }
+
+        if (executeLogOutApi) await logout();
+        localStorage.removeItem("session")
+        dispatch(onLogout());
+
     }
 
     const checkAuthToken = async () => {

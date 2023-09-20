@@ -1,9 +1,9 @@
-import { Provider } from "react-redux";
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import { DogShelterRouter } from "./router";
-import { store } from "./store/store";
-import { AxiosInterceptor } from "./api/appApi";
+import { DogShelterRouter } from './router';
+import { store } from './store/store';
+import { AxiosInterceptor } from './api/appApi';
 
 
 

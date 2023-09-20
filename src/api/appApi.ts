@@ -26,7 +26,7 @@ const AxiosInterceptor = ({ children }: { children: ReactNode }) => {
 
       const errInterceptor = (error: { response: { status: number; }; }) => {
 
-          if (error.response.status === UNAUTHORIZED) {
+          if (error?.response?.status === UNAUTHORIZED) {
             startLogout(false)
           }
 
