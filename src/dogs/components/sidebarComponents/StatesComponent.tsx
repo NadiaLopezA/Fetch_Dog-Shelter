@@ -1,4 +1,4 @@
-import { states } from '../../../assets/data/stateAndCities';
+import { states } from '../../../data/states';
 import { State } from '../../../interfaces/Location/State';
 import { BadgeComponent } from './';
 

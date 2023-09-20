@@ -1,4 +1,4 @@
-import { cities } from '../../../assets/data/stateAndCities';
+import { cities } from "../../../data/cities"
 
 export const CityComponent = (payload: {setCity: React.Dispatch<React.SetStateAction<string>>}) => {
     return (

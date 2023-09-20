@@ -5,7 +5,7 @@ export const NoResultsPage = () => {
             <div
                 className="flex items-center justify-center h-screen min-h-screen z-0 w-full opacity-30"
                 style={{
-                    backgroundImage: "url('../src/assets/img/dogShelterApp/search.png')",
+                    backgroundImage: "url('/img/dogShelterApp/search.png')",
                 }}
             >
                 <div className="z-1 h-52 min-h-52 relative">

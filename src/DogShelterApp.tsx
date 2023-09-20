@@ -1,5 +1,5 @@
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 import { DogShelterRouter } from './router';
 import { store } from './store/store';
@@ -12,9 +12,9 @@ export const DogShelterApp = () => {
     <>
       <Provider store={store}>
         <AxiosInterceptor>
-          <BrowserRouter basename="/index.html">
+          <HashRouter>
             <DogShelterRouter />
-          </BrowserRouter>
+          </HashRouter>
         </AxiosInterceptor >
       </Provider>
     </>
