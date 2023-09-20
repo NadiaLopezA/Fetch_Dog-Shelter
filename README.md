@@ -1,4 +1,26 @@
-# FETCH - Dog Shelter App
+<a name="readme-top"></a>
+
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="public/img/login/backgroundImage.png" alt="Logo" width="auto" height="auto">
+  </a>
+
+  <h3 align="center">FETCH - Dog Shelter App</h3>
+
+  <p align="center">
+    This is a website to help a dog-lover search through a database of shelter dogs, with the hope of finding a lucky dog a new home!
+    <br />
+    <br />
+    <a href="https://fetch.nadia-lopez.com">Visit Live App</a>
+    ·
+    <a href="https://github.com/NadiaLopezA/Fetch_Dog-Shelter/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/NadiaLopezA/Fetch_Dog-Shelter/issues">Request Feature</a>
+  </p>
+</div>
+
+
+## About The Project
 
 This project is the technical test requested by Fetch. To learn more about the requisites of the project, please visit: https://frontend-take-home.fetch.com
 
@@ -32,19 +54,18 @@ This project is the technical test requested by Fetch. To learn more about the r
 3. Run the project locally
    ```sh
     yarn dev
-   ```  
+   ```
 
-## Check out the App!
-Visit: https://fetch.nadia-lopez.com
-
-## Check out my website!
-Visit: https://nadia-lopez.com
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 ### Built With
 
 * [![React][React.js]][React-url]
+* [![Tailwind][Tailwind]][Tailwind-url]
 
+## Developer contact
+[![LinkedIn][linkedin-shield]][linkedin-url]
+  * Website: https://nadia-lopez.com
+   
  
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -53,7 +74,7 @@ Visit: https://nadia-lopez.com
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/nadia-lopez-aguilar
 [product-screenshot]: images/screenshot.png
-[Tailwind]: https://img.shields.io/badge/tailwind-000000?style=for-the-badge&logo=tailwind&logoColor=white
+[Tailwind]: https://img.shields.io/badge/tailwindcss-000000?style=for-the-badge&logo=tailwindcss&logoColor=white
 [Tailwind-url]: https://tailwindui.com/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
