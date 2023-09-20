@@ -11,6 +11,6 @@ This project is the technical test requested by Fetch. To learn more about the r
 5. Execute command "yarn dev"
 6. Enjoy the app!
 
-##Check the App!
+## Check the App!
 Visit: https://fetch.nadia-lopez.com/#/auth/login
  
